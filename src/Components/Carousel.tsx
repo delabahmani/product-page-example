@@ -1,0 +1,189 @@
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+
+type Props = {
+  images: string[];
+  thumbnails: string[];
+};
+
+const Carousel = ({ images, thumbnails }: Props) => {
+  const [currentImage, setCurrentImage] = useState(0);
+  const [activeImage, setActiveImage] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
+  const [isHovered, setIsHovered] = useState<number | null>(null);
+
+  const updateMedia = () => {
+    setIsDesktop(window.innerWidth > 1024);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  }, []);
+
+  return (
+    <div className="flex w-full select-none flex-col items-center ">
+      <div className="flex items-center lg:w-full lg:justify-center lg:flex-col">
+        <div
+          className="border-neutral-white lg:left-0 bg-neutral-white relative left-14 flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-full border-2 lg:hidden"
+          onClick={() =>
+            setCurrentImage((prev) =>
+              currentImage > 0 ? prev - 1 : images.length - 1,
+            )
+          }
+        >
+          <img
+            src="/assets/icon-previous.svg"
+            alt=""
+            className="h-[10px] w-[8px]"
+          />
+        </div>
+
+        <AnimatePresence mode="popLayout">
+          <motion.div
+            className="w-screen lg:w-auto"
+            key={currentImage}
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.1 }}
+          >
+            <img
+              className="mx-auto h-[300px] lg:h-[450px] lg:w-auto w-screen cursor-pointer object-cover lg:rounded-xl"
+              onClick={() => {
+                if (isDesktop) {
+                  setActiveImage(true);
+                  setSelectedImage(currentImage);
+                }
+              }}
+              width={1400}
+              height={1400}
+              src={images[currentImage]}
+              alt=""
+            />
+          </motion.div>
+        </AnimatePresence>
+
+        <div
+          className="border-neutral-white bg-neutral-white relative right-14 flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-full border-2 lg:hidden"
+          onClick={() =>
+            setCurrentImage((prev) =>
+              currentImage == images.length - 1 ? 0 : prev + 1,
+            )
+          }
+        >
+          <img
+            src="/assets/icon-next.svg"
+            alt=""
+            className="h-[10px] w-[8px] "
+          />
+        </div>
+
+        {isDesktop && (
+          <div className="mt-4 flex justify-center space-x-4">
+            {thumbnails.map((thumbnail, index) => (
+              <div
+                key={index}
+                className="relative h-20 w-20 cursor-pointer"
+                onClick={() => setCurrentImage(index)}
+                onMouseEnter={() => setIsHovered(index)}
+                onMouseLeave={() => setIsHovered(null)}
+              >
+                <img
+                  src={thumbnail}
+                  alt="thumbnails of sneakers"
+                  className="thumbnail h-full w-full rounded-lg object-cover"
+                />
+                {(index === isHovered || index === currentImage) && (
+                  <div className="border-orange-neutral absolute inset-0 z-20 rounded-lg border-2"></div>
+                )}
+                {index === currentImage && (
+                  <div className="absolute inset-0 z-20 rounded-lg border-2 border-orange-neutral"></div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {activeImage && isDesktop && (
+          <div className="bg-neutral-black fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-opacity-70">
+            <div className="relative  rounded-lg p-4">
+              <button onClick={() => setActiveImage(false)}>
+                <img
+                  src="/assets/icon-close.svg"
+                  alt=""
+                  className="absolute -top-1 right-4 h-[22px] w-[22px]"
+                />
+              </button>
+
+              <div className="relative flex items-center">
+                <div
+                  className="border-neutral-white bg-neutral-white absolute -left-5 flex h-[45px] w-[45px] cursor-pointer items-center justify-center rounded-full border-2"
+                  onClick={() =>
+                    setSelectedImage((prev) =>
+                      selectedImage > 0 ? prev - 1 : images.length - 1,
+                    )
+                  }
+                >
+                  <img
+                    src="/assets/icon-previous.svg"
+                    alt=""
+                    className="mr-1 h-[16px] w-[13px]"
+                  />
+                </div>
+
+                <img
+                  src={images[selectedImage]}
+                  alt=""
+                  className="w-[550px] rounded-2xl"
+                />
+
+                <div
+                  className="border-neutral-white bg-neutral-white absolute -right-5 flex h-[45px] w-[45px] cursor-pointer items-center justify-center rounded-full border-2 "
+                  onClick={() =>
+                    setSelectedImage((prev) =>
+                      selectedImage == images.length - 1 ? 0 : prev + 1,
+                    )
+                  }
+                >
+                  <img
+                    src="/assets/icon-next.svg"
+                    alt=""
+                    className="ml-1 h-[16px] w-[13px]"
+                  />
+                </div>
+              </div>
+
+              <div className="mt-4 flex justify-center space-x-7">
+                {thumbnails.map((thumbnail, index) => (
+                  <div
+                    key={index}
+                    className="relative h-20 w-20 cursor-pointer"
+                    onClick={() => setSelectedImage(index)}
+                    onMouseEnter={() => setIsHovered(index)}
+                    onMouseLeave={() => setIsHovered(null)}
+                  >
+                    <img
+                      src={thumbnail}
+                      alt="thumbnails of sneakers"
+                      className={`thumbnail h-full w-full rounded-lg object-cover`}
+                    />
+                    {(index === isHovered || index === selectedImage) && (
+                      <div className="bg-neutral-white absolute bottom-0 left-0 right-0 top-0 z-10 rounded-lg opacity-50"></div>
+                    )}
+                    {index === selectedImage && (
+                      <div className="border-orange-neutral absolute inset-0 z-20 rounded-lg border-2"></div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Carousel;
