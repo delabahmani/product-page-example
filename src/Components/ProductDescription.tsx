@@ -2,31 +2,31 @@ import QuantityInput from "./QuantityInput";
 
 const ProductDescription = () => {
   return (
-    <div className="flex w-full flex-col lg:w-1/2 ">
+    <div className="flex w-full px-3 flex-col lg:w-1/2 ">
       <h2 className="text-blue-dark pt-6 text-[12px] font-bold tracking-widest">
         SNEAKER COMPANY
       </h2>
       <h1 className="py-2 text-3xl font-extrabold">
         Fall Limited Edition Sneakers
       </h1>
-      <p className="text-blue-dark py-2 text-sm font-medium leading-6">
+      <p className="text-blue-dark py-2 text-[14.5px] font-medium leading-6">
         These low-profile sneakers are your perfect casual wear companion.
         Featuring a durable rubber outer sole, they&apos;ll withstand everything
         the weather can offer.
       </p>
       <div className="flex items-center space-x-4 py-4 leading-none">
-        <span className="text-[26px] font-extrabold ">$125.00</span>
-        <span className="bg-neutral-black text-neutral-white flex h-[25px] w-[50px]  items-center justify-center rounded-md text-[15px] font-semibold">
+        <span className="text-[27px] font-extrabold ">$125.00</span>
+        <span className="bg-neutral-black text-neutral-white flex h-[26px] w-[50px] items-center justify-center rounded-md text-[16px] font-semibold">
           50%
         </span>
-        <span className="text-blue-dark mb-2 pl-12 font-bold line-through">
+        <span className="text-blue-dark mb-2 pl-8 sm:pl-20 font-bold line-through">
           $250.00
         </span>
       </div>
 
       <QuantityInput />
       <div className="">
-        <button className="bg-orange-neutral flex h-[45px] w-full items-center justify-center rounded-lg font-extrabold">
+        <button className="bg-orange-neutral flex h-[50px] w-full items-center justify-center rounded-lg font-extrabold">
           <svg
             width="20"
             height="15"

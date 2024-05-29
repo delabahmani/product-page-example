@@ -1,14 +1,14 @@
 import { useState } from "react";
 
 const QuantityInput = () => {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(0);
 
   const increaseQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
   };
 
   const decreaseQuantity = () => {
-    if (quantity > 1) {
+    if (quantity > 0) {
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
   };
@@ -18,7 +18,7 @@ const QuantityInput = () => {
       <button onClick={decreaseQuantity} className="ml-5">
         <img src="/assets/icon-minus.svg" alt="minus sign" />
       </button>
-      <p className="text-center font-bold">{quantity}</p>
+      <p className="text-center font-extrabold">{quantity}</p>
       <button onClick={increaseQuantity} className="mr-5">
         <img src="/assets/icon-plus.svg" alt="plus sign" />
       </button>
