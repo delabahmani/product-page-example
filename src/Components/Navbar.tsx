@@ -1,45 +1,49 @@
 import React, { useState } from "react";
 
-const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface NavbarProps {
+  setIsCartActive: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ setIsCartActive }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <nav className="relative lg:mx-auto lg:w-3/4">
+    <nav className="relative lg:mx-auto lg:w-3/4 lg:border-b-gray-neutral lg:border-b-[1px] lg:border-opacity-40 ">
       <div className="flex items-center justify-between py-5">
         <div className="flex ">
-          <div className="flex md:hidden items-center">
+          <div className="flex  items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="hover:border-neutral-white flex items-center border-neutral-400 px-3 py-2"
+              className="border-neutral-400 flex items-center px-3 py-2 hover:border-neutral-white lg:hidden"
             >
               <svg
-                className="h-4 w-4 fill-[#68707d]"
+                className="relative top-[2px] h-4 w-4 fill-[#68707d] "
                 viewBox="0 0 15 20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <title>Menu</title>
-                <path d="M0 0h24v4H0V3zm0 7h24v4H0V9zm0 7h24v4H0v15z"/>
+                <path d="M0 0h24v4H0V3zm0 7h24v4H0V9zm0 7h24v4H0v15z" />
               </svg>
             </button>
 
             <img
               src="/assets/logo.svg"
               alt="sneakers logo"
-              className=" mr-10 h-[20px] w-[140px] "
+              className=" mr-10 h-[20px] w-[140px]"
             />
           </div>
 
           <div
             className={`${
               isOpen
-                ? "bg-neutral-black fixed inset-0 z-50 bg-opacity-70"
+                ? "fixed inset-0 z-50 bg-neutral-black bg-opacity-70"
                 : "hidden"
             }`}
           >
             <div
               className={`${
                 isOpen
-                  ? "bg-neutral-white fixed left-0 top-0 z-50 h-screen w-3/5"
+                  ? "fixed left-0 top-0 z-50 h-screen w-3/5 bg-neutral-white"
                   : "hidden"
               }`}
             >
@@ -68,7 +72,7 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="mr-auto hidden lg:flex ">
-          <ul className="flex space-x-4 text-lg font-bold">
+          <ul className="flex space-x-4 text-[14px] text-blue-dark font-medium">
             <li>Collections</li>
             <li>Men</li>
             <li>Women</li>
@@ -78,19 +82,22 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="ml-auto flex items-center space-x-5 px-6">
-          <img
-            src="/assets/icon-cart.svg"
-            alt="shopping cart icon"
-            className="mx-auto h-[20px] w-[23px] lg:h-[25px] lg:w-[28px]"
-          />
+          <button className="" onClick={() => setIsCartActive((prev) => !prev)}>
+            <img
+              src="/assets/icon-cart.svg"
+              alt="shopping cart icon"
+              className="mx-auto h-[20px] w-[23px] lg:h-[25px] lg:w-[28px]"
+            />
+          </button>
+          <button className="border-2 border-neutral-white hover:border-2 hover:border-orange-neutral hover:rounded-full ">
           <img
             src="/assets/image-avatar.png"
             alt="profile picture avatar"
             className="w-[26px] lg:w-[50px]"
           />
+          </button>
         </div>
       </div>
-      <hr className="hidden text-[#f7f8fd] lg:flex lg:w-full" />
     </nav>
   );
 };

@@ -1,20 +1,15 @@
-import { useState } from "react";
+import React from "react";
 
-const QuantityInput = () => {
-  const [quantity, setQuantity] = useState(0);
+interface QuantityInputProps {
+  quantity: number;
+  increaseQuantity: () => void;
+  decreaseQuantity: () => void;
+}
 
-  const increaseQuantity = () => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
-  };
-
-  const decreaseQuantity = () => {
-    if (quantity > 0) {
-      setQuantity((prevQuantity) => prevQuantity - 1);
-    }
-  };
+const QuantityInput: React.FC<QuantityInputProps> = ({quantity, increaseQuantity, decreaseQuantity}) => {
 
   return (
-    <div className="flex items-center justify-between bg-gray-light rounded-lg h-[50px] mb-4 mt-2 ">
+    <div className="flex items-center justify-between bg-gray-light rounded-lg h-[50px] mb-4 mt-2 md:w-2/3 md:mx-auto ">
       <button onClick={decreaseQuantity} className="ml-5">
         <img src="/assets/icon-minus.svg" alt="minus sign" />
       </button>

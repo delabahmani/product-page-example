@@ -6,16 +6,15 @@
 
 .thumbnail:hover::after,
 .thumbnail.hovered::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: white;
-  opacity: .5; /* Adjust for desired fade level */
+  opacity: 0.5; /* Adjust for desired fade level */
 }
-
 
 :root {
   font-family: "Kumbh Sans", sans-serif;
@@ -24,3 +23,24 @@
 li {
   cursor: pointer;
 }
+
+.filter-close {
+  filter: invert(100%) sepia(2%) saturate(9%) hue-rotate(331deg)
+    brightness(100%) contrast(104%);
+}
+
+.filter-close:hover {
+  filter: invert(64%) sepia(33%) saturate(5678%) hue-rotate(347deg)
+    brightness(100%) contrast(102%);
+}
+
+.filter-next {
+  filter: invert(0%) sepia(5%) saturate(5986%) hue-rotate(226deg)
+    brightness(88%) contrast(108%);
+}
+
+.filter-next:hover {
+  filter: invert(64%) sepia(33%) saturate(5678%) hue-rotate(347deg)
+    brightness(100%) contrast(102%);
+}
+
