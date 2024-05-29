@@ -23,7 +23,7 @@ const Carousel = ({ images, thumbnails }: Props) => {
   }, []);
 
   return (
-    <div className="flex w-full select-none flex-col items-center ">
+    <div className="flex w-full select-none flex-col items-center lg:w-1/2 ">
       <div className="flex items-center lg:w-full lg:justify-center lg:flex-col">
         <div
           className="border-neutral-white lg:left-0 bg-neutral-white relative left-14 flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-full border-2 lg:hidden"
@@ -113,12 +113,12 @@ const Carousel = ({ images, thumbnails }: Props) => {
                 <img
                   src="/assets/icon-close.svg"
                   alt=""
-                  className="absolute -top-1 right-4 h-[22px] w-[22px]"
+                  className="filter-close absolute -top-1 right-4 h-[22px] w-[22px]"
                 />
               </button>
 
               <div className="relative flex items-center">
-                <div
+                <button
                   className="border-neutral-white bg-neutral-white absolute -left-5 flex h-[45px] w-[45px] cursor-pointer items-center justify-center rounded-full border-2"
                   onClick={() =>
                     setSelectedImage((prev) =>
@@ -129,9 +129,9 @@ const Carousel = ({ images, thumbnails }: Props) => {
                   <img
                     src="/assets/icon-previous.svg"
                     alt=""
-                    className="mr-1 h-[16px] w-[13px]"
+                    className="filter-next mr-1 h-[16px] w-[13px]"
                   />
-                </div>
+                </button>
 
                 <img
                   src={images[selectedImage]}
@@ -139,7 +139,7 @@ const Carousel = ({ images, thumbnails }: Props) => {
                   className="w-[550px] rounded-2xl"
                 />
 
-                <div
+                <button
                   className="border-neutral-white bg-neutral-white absolute -right-5 flex h-[45px] w-[45px] cursor-pointer items-center justify-center rounded-full border-2 "
                   onClick={() =>
                     setSelectedImage((prev) =>
@@ -150,9 +150,9 @@ const Carousel = ({ images, thumbnails }: Props) => {
                   <img
                     src="/assets/icon-next.svg"
                     alt=""
-                    className="ml-1 h-[16px] w-[13px]"
+                    className="filter-next ml-1 h-[16px] w-[13px]"
                   />
-                </div>
+                </button>
               </div>
 
               <div className="mt-4 flex justify-center space-x-7">
