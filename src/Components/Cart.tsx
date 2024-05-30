@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 
 interface CartItem {
   id: number;
@@ -13,30 +13,10 @@ interface CartProps {
 }
 
 const Cart: React.FC<CartProps> = ({ cart, clearCart }) => {
-  const [isCartActive, setIsCartActive] = useState<boolean>(true);
-  const cartRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
-        setIsCartActive(false);
-      }
-    };
-
-    if (isCartActive) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isCartActive]);
+  const [isCartActive, setIsCartActive] = useState(true);
 
   return (
     <div
-      ref={cartRef}
       className={`bg-neutral-white fixed right-0 top-9 mr-10 mt-10 rounded-lg p-4 shadow-lg ${isCartActive ? "" : "hidden"}`}
     >
       <h3 className="text-lg font-bold">Cart</h3>

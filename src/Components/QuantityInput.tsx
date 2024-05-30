@@ -6,16 +6,27 @@ interface QuantityInputProps {
   decreaseQuantity: () => void;
 }
 
-const QuantityInput: React.FC<QuantityInputProps> = ({quantity, increaseQuantity, decreaseQuantity}) => {
-
+const QuantityInput: React.FC<QuantityInputProps> = ({
+  quantity,
+  increaseQuantity,
+  decreaseQuantity,
+}) => {
   return (
-    <div className="flex items-center justify-between bg-gray-light rounded-lg h-[50px] mb-4 mt-2 md:w-2/3 md:mx-auto ">
-      <button onClick={decreaseQuantity} className="ml-5">
-        <img src="/assets/icon-minus.svg" alt="minus sign" />
+    <div className="mb-4 mt-2 flex h-[50px] items-center justify-between rounded-lg bg-gray-light md:mx-auto md:w-2/3 ">
+      <button onClick={decreaseQuantity} className="ml-5 h-4 hover:opacity-70">
+        <img
+          src="/assets/icon-minus.svg"
+          alt="minus sign"
+          className="filter-quantity "
+        />
       </button>
       <p className="text-center font-extrabold">{quantity}</p>
-      <button onClick={increaseQuantity} className="mr-5">
-        <img src="/assets/icon-plus.svg" alt="plus sign" />
+      <button onClick={increaseQuantity} className="mr-5 h-4 hover:opacity-70">
+        <img
+          src="/assets/icon-plus.svg"
+          alt="plus sign"
+          className="filter-quantity "
+        />
       </button>
     </div>
   );

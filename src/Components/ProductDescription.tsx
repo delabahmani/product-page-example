@@ -61,8 +61,8 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ addItem, setQua
         increaseQuantity={increaseQuantity}
         decreaseQuantity={decreaseQuantity}
       />
-      <div className="">
-        <button className="flex h-[50px] w-full items-center justify-center rounded-lg bg-orange-neutral font-extrabold md:mx-auto md:w-2/3" onClick={handleAdd}>
+      <div >
+        <button className="flex h-[50px] w-full items-center justify-center rounded-lg bg-orange-neutral font-extrabold md:mx-auto md:w-2/3 hover:bg-opacity-70" onClick={handleAdd}>
           <svg
             width="20"
             height="15"
