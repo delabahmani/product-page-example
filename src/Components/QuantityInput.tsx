@@ -12,7 +12,7 @@ const QuantityInput: React.FC<QuantityInputProps> = ({
   decreaseQuantity,
 }) => {
   return (
-    <div className="mb-4 mt-2 flex h-[50px] items-center justify-between rounded-lg bg-gray-light md:mx-auto md:w-2/3 lg:w-[160px] lg:mb-0 lg:mt-0">
+    <div className="mb-4 mt-2 flex h-[50px] items-center justify-between rounded-lg bg-gray-light max-lg:mx-auto md:w-2/3 lg:mb-0 lg:mt-0 lg:w-[165px] lg:h-[62px] ">
       <button onClick={decreaseQuantity} className="ml-5 h-4 hover:opacity-70">
         <img
           src="/assets/icon-minus.svg"
