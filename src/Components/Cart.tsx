@@ -17,12 +17,12 @@ const Cart: React.FC<CartProps> = ({ cart, clearCart }) => {
 
   return (
     <div
-      className={`bg-neutral-white fixed right-0 top-9 mr-10 mt-10 rounded-lg p-4 shadow-lg ${isCartActive ? "" : "hidden"}`}
+      className={`bg-neutral-white fixed right-0 top-10 mr-10 mt-10 w-[310px] h-[260px] rounded-lg p-4 shadow-lg ${isCartActive ? "" : "hidden"}`}
     >
-      <h3 className="text-lg font-bold">Cart</h3>
-      <hr className="text-[#f7f8fd] w-full pb-8"/>
+      <h3 className="ml-2 font-bold border-b-[1px] border-b-gray-neutral border-opacity-40 py-4">Cart</h3>
+
       {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p className="font-extrabold text-neutral-black text-opacity-60 text-center py-[75px]">Your cart is empty.</p>
       ) : (
         <div>
         <ul>

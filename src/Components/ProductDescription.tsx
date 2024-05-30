@@ -11,7 +11,10 @@ interface ProductDescriptionProps {
   setQuantity: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const ProductDescription: React.FC<ProductDescriptionProps> = ({ addItem, setQuantity }) => {
+const ProductDescription: React.FC<ProductDescriptionProps> = ({
+  addItem,
+  setQuantity,
+}) => {
   const [quantity, setQuantityLocal] = useState<number>(0);
 
   const increaseQuantity = () => {
@@ -24,45 +27,47 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ addItem, setQua
   const handleAdd = () => {
     const item = {
       id: 1,
-      name: 'Fall Limited Edition Sneakers',
+      name: "Fall Limited Edition Sneakers",
       quantity: quantity,
-      price: 125.00,
+      price: 125.0,
     };
     addItem(item);
     setQuantityLocal(0);
-  }
-
+  };
 
   return (
-    <div className="flex w-full flex-col px-3 lg:w-1/2 lg:py-4 lg:mx-auto lg:px-32">
+    <div className="flex w-full flex-col px-3 lg:mx-auto lg:w-[800px] lg:px-32 lg:py-4 lg:h-[68vh]">
       <h2 className="pt-6 text-[12px] font-bold tracking-widest text-blue-dark">
         SNEAKER COMPANY
       </h2>
-      <h1 className="py-2 text-3xl font-extrabold">
+      <h1 className="py-2 text-[26px] md:text-3xl font-extrabold lg:text-5xl leading-8">
         Fall Limited Edition Sneakers
       </h1>
-      <p className="py-2 text-[14.5px] font-medium leading-6 text-blue-dark">
+      <p className="py-2 text-[15px] font-medium leading-6 text-blue-dark ">
         These low-profile sneakers are your perfect casual wear companion.
         Featuring a durable rubber outer sole, they&apos;ll withstand everything
         the weather can offer.
       </p>
-      <div className="flex items-center space-x-4 py-4 leading-none">
+      <div className="flex items-center space-x-4 py-4 leading-none relative">
         <span className="text-[27px] font-extrabold ">$125.00</span>
         <span className="flex h-[26px] w-[50px] items-center justify-center rounded-md bg-neutral-black text-[16px] font-semibold text-neutral-white">
           50%
         </span>
-        <span className="mb-2 pl-8 font-bold text-blue-dark line-through sm:pl-20">
+        <span className="font-bold text-blue-dark line-through absolute sm:left-[245px] ">
           $250.00
         </span>
       </div>
 
-      <QuantityInput
-        quantity={quantity}
-        increaseQuantity={increaseQuantity}
-        decreaseQuantity={decreaseQuantity}
-      />
-      <div >
-        <button className="flex h-[50px] w-full items-center justify-center rounded-lg bg-orange-neutral font-extrabold md:mx-auto md:w-2/3 hover:bg-opacity-70" onClick={handleAdd}>
+      <div className="lg:justify-content lg:py-14 py-1 lg:flex lg:items-center lg:space-x-4 lg:w-full">
+        <QuantityInput
+          quantity={quantity}
+          increaseQuantity={increaseQuantity}
+          decreaseQuantity={decreaseQuantity}
+        />
+        <button
+          className=" flex h-[50px] w-full items-center justify-center rounded-lg bg-orange-neutral font-extrabold hover:bg-opacity-70 md:mx-auto md:w-2/3 lg:w-[260px]"
+          onClick={handleAdd}
+        >
           <svg
             width="20"
             height="15"
