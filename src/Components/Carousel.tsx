@@ -23,10 +23,10 @@ const Carousel = ({ images, thumbnails }: Props) => {
   }, []);
 
   return (
-    <div className="flex w-full select-none flex-col items-center lg:w-1/2 ">
-      <div className="flex items-center lg:w-full lg:justify-center lg:flex-col">
+    <div className="flex w-full select-none flex-col items-center lg:w-1/2">
+      <div className="flex items-center lg:w-full lg:flex-col lg:justify-center">
         <div
-          className="border-neutral-white lg:left-0 bg-neutral-white relative left-14 flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-full border-2 lg:hidden"
+          className="relative left-14 flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-full border-2 border-neutral-white bg-neutral-white lg:left-0 lg:hidden"
           onClick={() =>
             setCurrentImage((prev) =>
               currentImage > 0 ? prev - 1 : images.length - 1,
@@ -50,7 +50,7 @@ const Carousel = ({ images, thumbnails }: Props) => {
             transition={{ duration: 0.1 }}
           >
             <img
-              className="mx-auto h-[300px] lg:h-[450px] lg:w-auto w-screen cursor-pointer object-cover lg:rounded-xl"
+              className="mx-auto h-[300px] w-screen cursor-pointer object-cover lg:h-[500px] lg:w-auto lg:rounded-xl"
               onClick={() => {
                 if (isDesktop) {
                   setActiveImage(true);
@@ -66,7 +66,7 @@ const Carousel = ({ images, thumbnails }: Props) => {
         </AnimatePresence>
 
         <div
-          className="border-neutral-white bg-neutral-white relative right-14 flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-full border-2 lg:hidden"
+          className="relative right-14 flex h-[35px] w-[35px] cursor-pointer items-center justify-center rounded-full border-2 border-neutral-white bg-neutral-white lg:hidden"
           onClick={() =>
             setCurrentImage((prev) =>
               currentImage == images.length - 1 ? 0 : prev + 1,
@@ -81,11 +81,11 @@ const Carousel = ({ images, thumbnails }: Props) => {
         </div>
 
         {isDesktop && (
-          <div className="mt-4 flex justify-center space-x-4">
+          <div className="mt-4 lg:mt-9 flex justify-center space-x-4 lg:space-x-6">
             {thumbnails.map((thumbnail, index) => (
               <div
                 key={index}
-                className="relative h-20 w-20 cursor-pointer"
+                className="relative h-20 w-20 cursor-pointer lg:h-[95px] lg:w-[95px]"
                 onClick={() => setCurrentImage(index)}
                 onMouseEnter={() => setIsHovered(index)}
                 onMouseLeave={() => setIsHovered(null)}
@@ -96,8 +96,9 @@ const Carousel = ({ images, thumbnails }: Props) => {
                   className="thumbnail h-full w-full rounded-lg object-cover"
                 />
                 {(index === isHovered || index === currentImage) && (
-                  <div className="border-orange-neutral absolute inset-0 z-20 rounded-lg border-2"></div>
+                  <div className="absolute inset-0 z-20 rounded-lg bottom-0 left-0 right-0 top-0 opacity-60 bg-neutral-white"></div>
                 )}
+
                 {index === currentImage && (
                   <div className="absolute inset-0 z-20 rounded-lg border-2 border-orange-neutral"></div>
                 )}
@@ -107,7 +108,7 @@ const Carousel = ({ images, thumbnails }: Props) => {
         )}
 
         {activeImage && isDesktop && (
-          <div className="bg-neutral-black fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-opacity-70">
+          <div className="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-neutral-black bg-opacity-70">
             <div className="relative  rounded-lg p-4">
               <button onClick={() => setActiveImage(false)}>
                 <img
@@ -119,7 +120,7 @@ const Carousel = ({ images, thumbnails }: Props) => {
 
               <div className="relative flex items-center">
                 <button
-                  className="border-neutral-white bg-neutral-white absolute -left-5 flex h-[45px] w-[45px] cursor-pointer items-center justify-center rounded-full border-2"
+                  className="absolute -left-5 flex h-[45px] w-[45px] cursor-pointer items-center justify-center rounded-full border-2 border-neutral-white bg-neutral-white"
                   onClick={() =>
                     setSelectedImage((prev) =>
                       selectedImage > 0 ? prev - 1 : images.length - 1,
@@ -140,7 +141,7 @@ const Carousel = ({ images, thumbnails }: Props) => {
                 />
 
                 <button
-                  className="border-neutral-white bg-neutral-white absolute -right-5 flex h-[45px] w-[45px] cursor-pointer items-center justify-center rounded-full border-2 "
+                  className="absolute -right-5 flex h-[45px] w-[45px] cursor-pointer items-center justify-center rounded-full border-2 border-neutral-white bg-neutral-white "
                   onClick={() =>
                     setSelectedImage((prev) =>
                       selectedImage == images.length - 1 ? 0 : prev + 1,
@@ -170,10 +171,10 @@ const Carousel = ({ images, thumbnails }: Props) => {
                       className={`thumbnail h-full w-full rounded-lg object-cover`}
                     />
                     {(index === isHovered || index === selectedImage) && (
-                      <div className="bg-neutral-white absolute bottom-0 left-0 right-0 top-0 z-10 rounded-lg opacity-50"></div>
+                      <div className="absolute bottom-0 left-0 right-0 top-0 z-10 rounded-lg bg-neutral-white opacity-50"></div>
                     )}
                     {index === selectedImage && (
-                      <div className="border-orange-neutral absolute inset-0 z-20 rounded-lg border-2"></div>
+                      <div className="absolute inset-0 z-20 rounded-lg border-2 border-orange-neutral"></div>
                     )}
                   </div>
                 ))}

@@ -24,6 +24,22 @@ li {
   cursor: pointer;
 }
 
+li:hover::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: #ff7d1a;
+  bottom: -43px;
+}
+
+li:hover {
+  color: black;
+}
+
+
+
 .filter-close {
   filter: invert(100%) sepia(2%) saturate(9%) hue-rotate(331deg)
     brightness(100%) contrast(104%);
@@ -35,12 +51,27 @@ li {
 }
 
 .filter-next {
-  filter: invert(0%) sepia(5%) saturate(5986%) hue-rotate(226deg)
-    brightness(88%) contrast(108%);
+  filter: brightness(0) saturate(100%) invert(0%) sepia(5%) saturate(7470%)
+    hue-rotate(138deg) brightness(100%) contrast(101%);
 }
 
 .filter-next:hover {
   filter: invert(64%) sepia(33%) saturate(5678%) hue-rotate(347deg)
     brightness(100%) contrast(102%);
+}
+
+.filter-cart {
+  filter: invert(45%) sepia(5%) saturate(942%) hue-rotate(181deg)
+    brightness(93%) contrast(89%);
+}
+
+.filter-cart:hover {
+  filter: brightness(0) saturate(100%) invert(0%) sepia(5%) saturate(7470%)
+    hue-rotate(138deg) brightness(100%) contrast(101%);
+}
+
+.filter-quantity {
+  filter: brightness(0) saturate(100%) invert(59%) sepia(39%) saturate(4185%)
+    hue-rotate(348deg) brightness(102%) contrast(101%);
 }
 

@@ -21,7 +21,7 @@ const ProductPage: React.FC<ProductPageProps> = ({
   setQuantity,
 }) => {
   return (
-    <div className="flex flex-col px-4 lg:flex-row lg:items-start lg:py-10 lg:w-2/3 lg:mx-auto lg:px-0">
+    <div className="flex flex-col px-4 lg:flex-row lg:items-start lg:py-16 lg:w-2/3 lg:mx-auto lg:px-0">
       <Carousel images={images} thumbnails={thumbnails} />
       <ProductDescription addItem={addItem} setQuantity={setQuantity}/>
     </div>
