@@ -13,7 +13,7 @@ interface CartItem {
 const App: React.FC = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartActive, setIsCartActive] = useState(false);
-  const [quantity, setQuantity] = useState<number>(0);
+  const [_quantity, setQuantity] = useState<number>(0);
 
   const addItem = (item: CartItem) => {
     setCart((prevCart) => {

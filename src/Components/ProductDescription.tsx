@@ -13,7 +13,7 @@ interface ProductDescriptionProps {
 
 const ProductDescription: React.FC<ProductDescriptionProps> = ({
   addItem,
-  setQuantity,
+  setQuantity: _setQuantity,
 }) => {
   const [quantity, setQuantityLocal] = useState<number>(0);
 

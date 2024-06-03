@@ -13,7 +13,7 @@ interface CartProps {
 }
 
 const Cart: React.FC<CartProps> = ({ cart, clearCart }) => {
-  const [isCartActive, setIsCartActive] = useState(true);
+  const [isCartActive, _setIsCartActive] = useState(true);
 
   return (
     <div className="container mx-auto p-4 sm:p-0 lg:mx-0 lg:p-0">
