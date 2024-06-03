@@ -11,7 +11,8 @@ const Carousel = ({ images, thumbnails }: Props) => {
   const [activeImage, setActiveImage] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024);
-  const [isHovered, setIsHovered] = useState<number | null>(null);
+  const [isModalHovered, setIsModalHovered] = useState<number | null>(null);
+  const [isDesktopHovered, setIsDesktopHovered] = useState<number | null>(null);
 
   const updateMedia = () => {
     setIsDesktop(window.innerWidth > 1024);
@@ -87,15 +88,15 @@ const Carousel = ({ images, thumbnails }: Props) => {
                 key={index}
                 className="relative h-20 w-20 cursor-pointer lg:h-[95px] lg:w-[95px]"
                 onClick={() => setCurrentImage(index)}
-                onMouseEnter={() => setIsHovered(index)}
-                onMouseLeave={() => setIsHovered(null)}
+                onMouseEnter={() => setIsDesktopHovered(index)}
+                onMouseLeave={() => setIsDesktopHovered(null)}
               >
                 <img
                   src={thumbnail}
                   alt="thumbnails of sneakers"
                   className="thumbnail h-full w-full rounded-lg object-cover"
                 />
-                {(index === isHovered || index === currentImage) && (
+                {(index === isDesktopHovered || index === currentImage) && (
                   <div className="absolute inset-0 bottom-0 left-0 right-0 top-0 z-20 rounded-lg bg-neutral-white opacity-60"></div>
                 )}
 
@@ -162,15 +163,15 @@ const Carousel = ({ images, thumbnails }: Props) => {
                     key={index}
                     className="relative h-20 w-20 cursor-pointer"
                     onClick={() => setSelectedImage(index)}
-                    onMouseEnter={() => setIsHovered(index)}
-                    onMouseLeave={() => setIsHovered(null)}
+                    onMouseEnter={() => setIsModalHovered(index)}
+                    onMouseLeave={() => setIsModalHovered(null)}
                   >
                     <img
                       src={thumbnail}
                       alt="thumbnails of sneakers"
                       className={`thumbnail h-full w-full rounded-lg object-cover`}
                     />
-                    {(index === isHovered || index === selectedImage) && (
+                    {(index === isModalHovered || index === selectedImage) && (
                       <div className="absolute bottom-0 left-0 right-0 top-0 z-10 rounded-lg bg-neutral-white opacity-50"></div>
                     )}
                     {index === selectedImage && (
