@@ -81,7 +81,7 @@ const Carousel = ({ images, thumbnails }: Props) => {
         </div>
 
         {isDesktop && (
-          <div className="mt-4 lg:mt-9 flex justify-center space-x-4 lg:space-x-6">
+          <div className="mt-4 flex justify-center space-x-4 lg:mt-9 lg:space-x-6">
             {thumbnails.map((thumbnail, index) => (
               <div
                 key={index}
@@ -96,7 +96,7 @@ const Carousel = ({ images, thumbnails }: Props) => {
                   className="thumbnail h-full w-full rounded-lg object-cover"
                 />
                 {(index === isHovered || index === currentImage) && (
-                  <div className="absolute inset-0 z-20 rounded-lg bottom-0 left-0 right-0 top-0 opacity-60 bg-neutral-white"></div>
+                  <div className="absolute inset-0 bottom-0 left-0 right-0 top-0 z-20 rounded-lg bg-neutral-white opacity-60"></div>
                 )}
 
                 {index === currentImage && (

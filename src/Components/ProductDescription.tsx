@@ -56,7 +56,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({
           <span className="flex h-[26px] w-[50px] items-center justify-center rounded-md bg-neutral-black text-[16px] font-semibold text-neutral-white lg:h-[30px] lg:w-[59px] lg:text-[18px] ">
             50%
           </span>
-          <span className="absolute font-bold text-blue-dark line-through sm:left-[245px] md:left-[400px] lg:-left-4  lg:top-[78px]">
+          <span className="absolute font-bold text-blue-dark line-through sm:left-[200px] md:left-[400px] lg:-left-4  lg:top-[78px]">
             $250.00
           </span>
         </div>
