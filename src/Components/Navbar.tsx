@@ -78,7 +78,7 @@ const Navbar = ({ cartCount, handleIsCartActive }: Props) => {
         </div>
 
         <div className="mr-auto hidden lg:flex lg:ml-5">
-          <ul className="flex space-x-4 lg:space-x-8 text-[14px] font-medium text-blue-dark lg:text-[16px]">
+          <ul className="flex space-x-4 lg:space-x-8 text-[14px] font-medium text-blue-dark lg:text-[16px] nav-li">
             <li className="relative">Collections</li>
             <li className="relative">Men</li>
             <li className="relative">Women</li>

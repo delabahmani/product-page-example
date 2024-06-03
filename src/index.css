@@ -20,11 +20,11 @@
   font-family: "Kumbh Sans", sans-serif;
 }
 
-li {
+.nav-li li {
   cursor: pointer;
 }
 
-li:hover::after {
+.nav-li li:hover::after {
   content: "";
   display: block;
   position: absolute;
@@ -34,7 +34,7 @@ li:hover::after {
   bottom: -43px;
 }
 
-li:hover {
+.nav-li li:hover {
   color: black;
 }
 
